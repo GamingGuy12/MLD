@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles & Updates | Myanmar Landslide Division</title>
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="images/logo.png">
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a class="navbar-brand d-flex align-items-center" href="">
+                <img src="images/logo.png" alt="logo" height="50" class="me-3">
+                <div>
+                    <h4 class="mb-0">M.L.D</h4>
+                    <p class="mb-0 small">Myanmar Landslide Division</p>
+                </div>
+            </a>
+            
+            <form class="input-group w-50 search-bar">
+                <input class="form-control" type="search" placeholder="Search for..." id="SearchBar">
+                <span class="input-group-text"><i class="bi bi-search"></i></span>
+            </form>
+
+            <div class="d-flex">
+                <button type="button" class="btn me-2 log" data-bs-toggle="modal" data-bs-target="#SignIn">
+                    Sign In  
+                </button>
+                <button type="button" class="btn sign" data-bs-toggle="modal" data-bs-target="#SignUp">
+                    Sign Up
+                </button>
+            </div>
+
+        </div>
+    </nav>
+    
+    <div class="sticky-nav">
+        <nav class="navbar navbar-expand-lg nav_btm">
+            <div class="container d-flex align-items-center justify-content-between">            
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="about_us.html" class="nav-link">About Us</a></li>
+                    </ul>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+    </div>
+
+    <div class="hero-body">
+        <div class="hero-section Prep_heroBackground">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <div class="hero-text">
+                        <h1 class="hero-title fw-bold mb-4">Landslide Articles & Updates</h1>
+                        <p class="fs-6 mb-4">Learn about why landslides happen, how rainfall affects slopes, what warning signs to recognise and how communities can reduce risk. These articles are educational resources, not live emergency reports.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="container py-5">
+        <div class="d-flex flex-wrap justify-content-between align-items-end gap-2 mb-4">
+            <div><span class="badge text-bg-success mb-2">LEARN & PREPARE</span><h2 class="fw-bold mb-1">Understanding landslide hazards</h2><p class="text-muted mb-0">Short guides for safer homes and communities.</p></div>
+            <a href="preparation.html" class="btn btn-theme">View preparation guide</a>
+        </div>
+
+        <article class="card border-0 shadow-sm mb-4 overflow-hidden">
+            <div class="row g-0 align-items-center">
+                <div class="col-lg-4"><img src="images/PrepHero.jpg" class="img-fluid w-100 h-100" style="object-fit:cover; min-height:220px;" alt="Rain falling on a hillside"></div>
+                <div class="col-lg-8"><div class="card-body p-4"><span class="badge text-bg-success mb-2">LANDSLIDE BASICS</span><h3 class="fw-bold">1. What causes a landslide?</h3><p>Landslides happen when rock, soil or debris moves down a slope under gravity. A slope can become unstable when the forces pulling material downhill become greater than the forces holding it in place. Triggers include intense or prolonged rainfall, earthquakes, river erosion, construction and changes to the land.</p><p>Rain can add weight to soil and increase water pressure between soil particles, reducing the strength that helps keep a slope stable. However, not every landslide has the same cause, and local geology, slope shape, drainage and land use all matter.</p><p class="mb-0"><strong>Why it matters:</strong> Understanding local conditions helps communities recognise risk and make safer decisions about where to build, travel and evacuate.</p></div></div>
+            </div>
+        </article>
+
+        <div class="row g-4">
+            <div class="col-lg-6"><article class="card border-0 shadow-sm h-100"><div class="card-body p-4"><span class="badge text-bg-success mb-2">WEATHER & ENVIRONMENT</span><h4 class="fw-bold">2. How heavy rainfall affects slope stability</h4><p>During long or intense rain, water can soak into the ground and make soil heavier. Water pressure may build up in the spaces between soil grains, reducing friction and making movement more likely. Surface runoff can also erode the base of a slope or concentrate water in one place.</p><p class="mb-0">Keep drainage channels clear where safe, avoid directing roof or road runoff onto unstable slopes, and pay attention to official weather and hazard information. Do not attempt engineering work on a slope without qualified advice.</p></div></article></div>
+            <div class="col-lg-6"><article class="card border-0 shadow-sm h-100"><div class="card-body p-4"><span class="badge text-bg-success mb-2">EARLY WARNING</span><h4 class="fw-bold">3. Warning signs communities should recognise</h4><p>Possible signs include new cracks in the ground or walls, bulging soil, leaning trees or poles, unusual water seepage, sudden changes in stream levels and rumbling or cracking sounds. These signs do not prove that a landslide will happen, but they should be taken seriously.</p><p class="mb-0">Move away if danger is immediate and report observations to local authorities. Some landslides happen with little or no visible warning, so never rely on warning signs alone.</p></div></article></div>
+            <div class="col-lg-6"><article class="card border-0 shadow-sm h-100"><div class="card-body p-4"><span class="badge text-bg-success mb-2">COMMUNITY SAFETY</span><h4 class="fw-bold">4. Why evacuation planning matters</h4><p>Roads can become blocked by mud, rocks or damaged bridges during a landslide. Planning more than one route, identifying safer meeting points and keeping emergency contacts accessible can save valuable time.</p><p class="mb-0">Families should consider the needs of children, older adults, people with disabilities and pets. Practise the plan before the rainy season and follow evacuation instructions from local authorities.</p></div></article></div>
+            <div class="col-lg-6"><article class="card border-0 shadow-sm h-100"><div class="card-body p-4"><span class="badge text-bg-success mb-2">RISK REDUCTION</span><h4 class="fw-bold">5. How communities can reduce landslide risk</h4><p>Risk reduction begins with understanding local terrain and avoiding unsafe development on unstable slopes or in channels where debris may travel. Protecting suitable vegetation, managing stormwater and maintaining drainage can help reduce some slope-related problems.</p><p class="mb-0">Large retaining structures, slope modifications and drainage designs require assessment by qualified geotechnical professionals. Simple actions by residents should never be treated as a substitute for professional engineering or official land-use guidance.</p></div></article></div>
+        </div>
+
+        <div class="p-4 rounded-3 mt-5" style="background:#eef3ed;"><h3 class="fw-bold">Landslide risk in Myanmar</h3><p>Myanmar has mountainous and hilly regions where steep terrain, weathering, intense monsoon rainfall and changes to land cover can contribute to landslide hazards. Risk varies greatly from one location to another. Communities should use local knowledge alongside information from relevant authorities and qualified specialists.</p><p class="mb-0">The locations and indicators shown on the Myanmar Landslide Division project map are educational examples. They should not be interpreted as verified live hazard assessments or official warnings.</p></div>
+
+        <div class="mt-5"><h5 class="fw-bold">Sources and further reading</h5><ul><li><a href="https://www.usgs.gov/programs/landslide-hazards/landslide-basics" target="_blank" rel="noopener">USGS – Landslide basics</a></li><li><a href="https://www.usgs.gov/programs/landslide-hazards/how-do-i-prepare-a-landslide" target="_blank" rel="noopener">USGS – Landslide preparedness</a></li><li><a href="https://www.usgs.gov/programs/landslide-hazards/what-are-signs-landslide-development-what-do-i-do-if-a-landslide-occurs" target="_blank" rel="noopener">USGS – Warning signs and response</a></li><li><a href="https://www.ready.gov/landslides-debris-flow" target="_blank" rel="noopener">Ready.gov – Landslides and debris flows</a></li><li><a href="https://www.redcross.org/get-help/how-to-prepare-for-emergencies/types-of-emergencies/landslide.html" target="_blank" rel="noopener">American Red Cross – Landslide safety</a></li></ul></div>
+    </section>
+
+    <div class="container d-flex justify-content-center p-0">
+        <hr class="between-sections">
+    </div>
+
+    
+    <div class="container">
+        <ul class="pagination justify-content-center py-4 mb-0 custom-pagination" aria-label="Page navigation">
+            <li class="page-item"><a class="page-link" href="index.html">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="index.html">1</a></li>
+            <li class="page-item active" aria-current="page"><span class="page-link">2</span></li>
+            <li class="page-item"><a class="page-link" href="dashboard.html">3</a></li>
+            <li class="page-item"><a class="page-link" href="map.html">4</a></li>
+            <li class="page-item"><a class="page-link" href="services.html">5</a></li>
+            <li class="page-item"><a class="page-link" href="dashboard.html">Next</a></li>
+        </ul>
+    </div>
+
+    <footer class="pb-3 pt-5 mt-auto" id="foota">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-3 mb-3">
+                    <h5 class="mb-3">Myanmar Landslide Division</h5>
+                    <p>Raising landslide awareness and supporting safer, better-prepared communities across Myanmar.</p>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                        <li class="nav-item"><a href="map.html" class="nav-link">Map</a></li>
+                        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="about_us.html#contact" class="nav-link">Contact Us</a></li>
+                    </ul>
+                </div>
+
+
+                <div class="col-md-3 mb-3">
+                    <h5 class="mb-3">Legal Information</h5>
+                    <ul class="list-unstyled text-muted">
+                        <li class="nav-item"><a href="terms_and_conditions.html" class="nav-link">Terms & Conditions</a></li>
+                        <li class="nav-item"><a href="privacy_policy.html" class="nav-link">Privacy Policy</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <h5 class="mb-3">Contact</h5>
+                    <p>Email: mld@myanmar.gov.mm</p>
+                    <p>Phone: +95 9441687843</p>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="text-center">
+                <p class="mb-0">&copy; 2026 Myanmar Landslide Division. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="SignIn">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Sign In</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body ">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white"><i class="bi bi-envelope"></i></span>
+                            <input type="email" class="form-control" placeholder="you@example.com">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white"><i class="bi bi-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Enter your password">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer d-flex flex-column">
+                    <button type="button" class="btn log w-100">
+                        Sign In
+                    </button>
+
+                    <a href="#SignUp" data-bs-toggle="modal">Don't have an account?</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="SignUp">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Register</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body ">
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Username</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white"><i class="bi bi-person"></i></span>
+                            <input type="email" class="form-control" placeholder="Choose a username">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Email</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white"><i class="bi bi-envelope"></i></span>
+                            <input type="email" class="form-control" placeholder="you@example.com">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white"><i class="bi bi-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Enter your password">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label fw-semibold">Retype Password</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white"><i class="bi bi-lock"></i></span>
+                            <input type="password" class="form-control" placeholder="Enter your password">
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal-footer d-flex flex-column">
+                    <button type="button" class="btn sign w-100">
+                        Sign Up
+                    </button>
+
+                    <a href="#SignIn" data-bs-toggle="modal">Already have an account?</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- General Offcanvas -->
+    <div class="offcanvas offcanvas-end site-offcanvas" tabindex="-1" id="siteOffcanvas" aria-labelledby="siteOffcanvasLabel">
+        <div class="offcanvas-header">
+            <div>
+                <h5 class="offcanvas-title mb-1" id="siteOffcanvasLabel">Explore M.L.D.</h5>
+                <p class="small mb-0">Maps, news and useful information</p>
+            </div>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body">
+            <ul class="nav nav-pills site-panel-tabs mb-3" id="sitePanelTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="panel-map-tab" data-bs-toggle="pill" data-bs-target="#panel-map" type="button" role="tab" aria-controls="panel-map" aria-selected="true">
+                        <i class="bi bi-map me-1"></i> Map
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="panel-news-tab" data-bs-toggle="pill" data-bs-target="#panel-news" type="button" role="tab" aria-controls="panel-news" aria-selected="false">
+                        <i class="bi bi-newspaper me-1"></i> News & Updates
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="panel-map" role="tabpanel" aria-labelledby="panel-map-tab" tabindex="0">
+                    <div id="offcanvasMap" class="offcanvas-map"></div>
+                    <p class="small text-muted mt-3 mb-2">This map displays sample locations for the project. It is not a live warning map.</p>
+                    <a href="map.html" class="btn btn-theme btn-sm">Open Full Map <i class="bi bi-arrow-right ms-1"></i></a>
+                </div>
+
+                <div class="tab-pane fade" id="panel-news" role="tabpanel" aria-labelledby="panel-news-tab" tabindex="0">
+                    <div class="news-notice mb-3">
+                        <i class="bi bi-info-circle-fill me-2"></i>
+                        These are sample educational updates for the project, not official government announcements.
+                    </div>
+
+                    <article class="site-news-item">
+                        <span class="badge news-label">Safety Bulletin</span>
+                        <h6 class="mt-2 mb-1">Rainfall and slope stability</h6>
+                        <p class="small text-muted mb-2">Prolonged or intense rainfall can saturate soil and increase landslide risk. Pay attention to official local advisories and changes such as ground cracks or unusual water flow.</p>
+                        <a href="preparation.html" class="small">Read safety guidance <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="site-news-item">
+                        <span class="badge news-label">Preparedness Update</span>
+                        <h6 class="mt-2 mb-1">Plan ahead before severe weather</h6>
+                        <p class="small text-muted mb-2">Know your evacuation routes, identify safer locations and keep important emergency contacts accessible before heavy rain begins.</p>
+                        <a href="preparation.html" class="small">View preparation tips <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="site-news-item">
+                        <span class="badge news-label">Map Information</span>
+                        <h6 class="mt-2 mb-1">Explore mapped landslide locations</h6>
+                        <p class="small text-muted mb-2">The interactive map is included to help visitors explore example locations and understand how hazard information can be presented.</p>
+                        <a href="map.html" class="small">Explore the map <i class="bi bi-arrow-right"></i></a>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Open the General Offcanvas -->
+    <button type="button" class="btn site-offcanvas-button" data-bs-toggle="offcanvas" data-bs-target="#siteOffcanvas" aria-controls="siteOffcanvas">
+        <i class="bi bi-grid-fill"></i> Explore
+    </button>
+
+    <script>
+        (function () {
+            const panel = document.getElementById("siteOffcanvas");
+            const mapCanvas = document.getElementById("offcanvasMap");
+            const mapTab = document.getElementById("panel-map-tab");
+            let previewMap = null;
+
+            function showPreviewMap() {
+                if (typeof L === "undefined") {
+                    mapCanvas.innerHTML = '<p class="p-3 small">The map could not load. Please check your internet connection.</p>';
+                    return;
+                }
+
+                if (!previewMap) {
+                    previewMap = L.map("offcanvasMap").setView([21.9, 96.0], 5);
+
+                    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                        maxZoom: 18,
+                        attribution: "&copy; OpenStreetMap contributors"
+                    }).addTo(previewMap);
+
+                    const locations = [
+                        { name: "Dawei District, Tanintharyi", lat: 14.083, lng: 98.200, color: "#d9534f" },
+                        { name: "Monghsu Township, Shan", lat: 21.917, lng: 98.383, color: "#f0ad4e" },
+                        { name: "Hpakant, Kachin", lat: 25.613, lng: 96.311, color: "#d9534f" },
+                        { name: "Rezua, Chin", lat: 22.053, lng: 93.409, color: "#5cb85c" },
+                        { name: "Tangyan Township, Shan", lat: 22.483, lng: 98.400, color: "#f0ad4e" },
+                        { name: "Naungmon Township, Kachin", lat: 27.500, lng: 97.817, color: "#5cb85c" },
+                        { name: "Pang War, Kachin", lat: 25.594, lng: 98.379, color: "#f0ad4e" }
+                    ];
+
+                    locations.forEach(function (location) {
+                        L.circleMarker([location.lat, location.lng], {
+                            radius: 7,
+                            color: "white",
+                            weight: 2,
+                            fillColor: location.color,
+                            fillOpacity: 0.9
+                        }).bindPopup(location.name).addTo(previewMap);
+                    });
+                }
+
+                previewMap.invalidateSize();
+            }
+
+            panel.addEventListener("shown.bs.offcanvas", function () {
+                if (mapTab.classList.contains("active")) {
+                    showPreviewMap();
+                }
+            });
+
+            mapTab.addEventListener("shown.bs.tab", showPreviewMap);
+
+            document.querySelectorAll("[data-panel-tab]").forEach(function (link) {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const tabButton = document.querySelector(link.getAttribute("data-panel-tab"));
+
+                    if (tabButton && window.bootstrap) {
+                        bootstrap.Tab.getOrCreateInstance(tabButton).show();
+                    }
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>

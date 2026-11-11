@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+    <link rel="icon" type="image/x-icon" href="images/logo.png">
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+    <!-- Top Navigation -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/logo.png" alt="logo" height="50" class="me-3">
+
+                <div>
+                    <h4 class="mb-0">M.L.D.</h4>
+                    <p class="mb-0 small">Myanmar Landslide Division</p>
+                </div>
+            </a>
+
+            <form class="input-group w-50 search-bar">
+                <input class="form-control" type="search" placeholder="Search for locations...">
+                <span class="input-group-text">
+                    <i class="bi bi-search"></i>
+                </span>
+            </form>
+
+            <div class="d-flex">
+                <button class="btn me-2 log">Sign In</button>
+                <button class="btn sign">Sign Up</button>
+            </div>
+
+        </div>
+    </nav>
+
+
+    <!-- Secondary Navigation -->
+    <div class="sticky-nav">
+        <nav class="navbar navbar-expand-lg nav_btm">
+            <div class="container">
+
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a href="index.html" class="nav-link">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="dashboard.html" class="nav-link active">Dashboard</a>
+                        </li>
+
+
+                        <li class="nav-item">
+                            <a href="services.html" class="nav-link">Services</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a href="about_us.html" class="nav-link">About Us</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+            </div>
+        </nav>
+    </div>
+
+
+    <!-- Main Dashboard -->
+    <main class="container dashboard-container py-4">
+
+        <!-- Dashboard Heading -->
+        <div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+            <div>
+                <h2 class="mb-1">Dashboard Overview</h2>
+                <p class="text-muted mb-0">
+                    Monitor landslide risks and environmental conditions across Myanmar.
+                </p>
+            </div>
+
+            <div class="text-muted small mt-2">
+                <i class="bi bi-clock me-1"></i>
+                Last updated: 02 November 2026
+            </div>
+        </div>
+
+
+        <!-- Overview Cards -->
+        <div class="row g-3 mb-4">
+
+            <!-- Risk Level -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card overview-card h-100">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-theme risk-icon">
+                            <i class="bi bi-exclamation-triangle-fill"></i>
+                        </div>
+
+                        <div class="ms-3">
+                            <p class="mb-1">Overall Risk Level</p>
+                            <h4 class="risk-text mb-0">MODERATE</h4>
+                            <small class="text-muted">Across monitored areas</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rainfall -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card overview-card h-100">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-theme">
+                            <i class="bi bi-cloud-rain-fill"></i>
+                        </div>
+
+                        <div class="ms-3">
+                            <p class="mb-1">Rainfall (24 Hours)</p>
+                            <h4 class="mb-0">85 mm</h4>
+                            <small class="text-muted">Sample measurement</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alerts -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card overview-card h-100">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-theme">
+                            <i class="bi bi-bell-fill"></i>
+                        </div>
+
+                        <div class="ms-3">
+                            <p class="mb-1">Active Warnings</p>
+                            <h4 class="mb-0">03</h4>
+                            <small class="text-muted">Sample alerts</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monitoring Stations -->
+            <div class="col-lg-3 col-md-6">
+                <div class="card overview-card h-100">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-theme">
+                            <i class="bi bi-broadcast-pin"></i>
+                        </div>
+
+                        <div class="ms-3">
+                            <p class="mb-1">Monitoring Stations</p>
+                            <h4 class="mb-0">12</h4>
+                            <small class="text-muted">Sample station count</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Map and Risk Information -->
+        <div class="row g-4 mb-4">
+
+            <!-- Monitoring Map -->
+            <div class="col-lg-8">
+                <div class="stat-card h-100">
+
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <div>
+                            <h5 class="mb-1">Landslide Risk Map</h5>
+                            <p class="small text-muted mb-0">
+                                Overview of monitored regions
+                            </p>
+                        </div>
+
+                        <a href="map.html" class="btn btn-theme btn-sm">
+                            View Full Map <i class="bi bi-arrow-right"></i>
+                        </a>
+                    </div>
+
+                    <!-- Map Placeholder -->
+                    <div id="map" class="map-box"></div>
+
+                    <p class="small text-muted mt-2 mb-0">
+                        Illustrative map with sample risk locations.
+                    </p>
+
+                </div>
+            </div>
+
+
+            <!-- Risk Summary -->
+            <div class="col-lg-4">
+                <div class="stat-card h-100">
+
+                    <h5 class="mb-1">Risk Distribution</h5>
+                    <p class="small text-muted mb-4">
+                        Sample distribution of monitored areas
+                    </p>
+
+                    <div class="risk-stat mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>High Risk</span>
+                            <strong>20%</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar bg-danger" style="width: 20%"></div>
+                        </div>
+                    </div>
+
+                    <div class="risk-stat mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Moderate Risk</span>
+                            <strong>50%</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar bg-warning" style="width: 50%"></div>
+                        </div>
+                    </div>
+
+                    <div class="risk-stat mb-4">
+                        <div class="d-flex justify-content-between mb-2">
+                            <span>Low Risk</span>
+                            <strong>30%</strong>
+                        </div>
+
+                        <div class="progress">
+                            <div class="progress-bar bg-success" style="width: 30%"></div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between">
+                        <span class="text-muted">Total monitored areas</span>
+                        <strong>20</strong>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+        <!-- Environmental Monitoring -->
+        <div class="stat-card mb-4">
+
+            <div class="mb-4">
+                <h5 class="mb-1">Environmental Monitoring</h5>
+                <p class="small text-muted mb-0">
+                    Important environmental factors affecting landslide risk
+                </p>
+            </div>
+
+            <div class="row g-4">
+
+                <!-- Rainfall -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="environment-card">
+                        <div class="d-flex justify-content-between">
+                            <i class="bi bi-cloud-rain-fill fs-3"></i>
+                            <span class="badge bg-warning text-dark">Moderate</span>
+                        </div>
+
+                        <p class="mt-3 mb-1 text-muted">Rainfall</p>
+                        <h3>85 <small>mm</small></h3>
+                        <p class="small text-muted mb-0">Last 24 hours</p>
+                    </div>
+                </div>
+
+                <!-- Soil Moisture -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="environment-card">
+                        <div class="d-flex justify-content-between">
+                            <i class="bi bi-moisture fs-3"></i>
+                            <span class="badge bg-warning text-dark">Moderate</span>
+                        </div>
+
+                        <p class="mt-3 mb-1 text-muted">Soil Moisture</p>
+                        <h3>72 <small>%</small></h3>
+                        <p class="small text-muted mb-0">Sample soil saturation reading</p>
+                    </div>
+                </div>
+
+                <!-- Ground Movement -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="environment-card">
+                        <div class="d-flex justify-content-between">
+                            <i class="bi bi-activity fs-3"></i>
+                            <span class="badge bg-success">Normal</span>
+                        </div>
+
+                        <p class="mt-3 mb-1 text-muted">Ground Movement</p>
+                        <h3>2.4 <small>mm</small></h3>
+                        <p class="small text-muted mb-0">Sample displacement reading</p>
+                    </div>
+                </div>
+
+                <!-- Temperature -->
+                <div class="col-lg-3 col-md-6">
+                    <div class="environment-card">
+                        <div class="d-flex justify-content-between">
+                            <i class="bi bi-thermometer-half fs-3"></i>
+                            <span class="badge bg-success">Normal</span>
+                        </div>
+
+                        <p class="mt-3 mb-1 text-muted">Temperature</p>
+                        <h3>27 <small>°C</small></h3>
+                        <p class="small text-muted mb-0">Sample measurement</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- Alerts and Quick Actions -->
+        <div class="row g-4 mb-4">
+
+            <!-- Recent Alerts -->
+            <div class="col-lg-7">
+                <div class="stat-card h-100">
+
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                            <h5 class="mb-1">Recent Alerts</h5>
+                            <p class="small text-muted mb-0">
+                                Latest monitoring notifications
+                            </p>
+                        </div>
+
+                        <a href="map.html" class="small">View All</a>
+                    </div>
+
+                    <div class="alert-item alert-warning-item mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-exclamation-triangle-fill me-3"></i>
+
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">Heavy Rainfall Detected</h6>
+                                <p class="small text-muted mb-0">
+                                    Increased rainfall may raise landslide risk.
+                                </p>
+                            </div>
+
+                            <span class="badge bg-warning text-dark">Warning</span>
+                        </div>
+                    </div>
+
+                    <div class="alert-item alert-danger-item mb-3">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-exclamation-circle-fill me-3"></i>
+
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">Soil Moisture Increasing</h6>
+                                <p class="small text-muted mb-0">
+                                    Monitor soil saturation in vulnerable areas.
+                                </p>
+                            </div>
+
+                            <span class="badge bg-danger">High Risk</span>
+                        </div>
+                    </div>
+
+                    <div class="alert-item alert-info-item">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-info-circle-fill me-3"></i>
+
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">Monitoring Station Updated</h6>
+                                <p class="small text-muted mb-0">
+                                    Environmental readings have been refreshed.
+                                </p>
+                            </div>
+
+                            <span class="badge bg-primary">Info</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <!-- Quick Actions -->
+            <div class="col-lg-5">
+                <div class="stat-card h-100">
+
+                    <h5 class="mb-1">Quick Actions</h5>
+                    <p class="small text-muted mb-4">
+                        Explore useful resources and information
+                    </p>
+
+                    <a href="map.html" class="quick-action-link">
+                        <div class="d-flex align-items-center">
+                            <div class="icon-theme">
+                                <i class="bi bi-map"></i>
+                            </div>
+
+                            <div class="ms-3 flex-grow-1">
+                                <h6 class="mb-1">Explore Risk Map</h6>
+                                <p class="small text-muted mb-0">
+                                    Find landslide-prone locations
+                                </p>
+                            </div>
+
+                            <i class="bi bi-chevron-right"></i>
+                        </div>
+                    </a>
+
+                    <a href="preparation.html" class="quick-action-link">
+                        <div class="d-flex align-items-center">
+                            <div class="icon-theme">
+                                <i class="bi bi-shield-check"></i>
+                            </div>
+
+                            <div class="ms-3 flex-grow-1">
+                                <h6 class="mb-1">Prevention Methods</h6>
+                                <p class="small text-muted mb-0">
+                                    Learn how to reduce landslide risks
+                                </p>
+                            </div>
+
+                            <i class="bi bi-chevron-right"></i>
+                        </div>
+                    </a>
+
+                    <a href="preparation.html" class="quick-action-link">
+                        <div class="d-flex align-items-center">
+                            <div class="icon-theme">
+                                <i class="bi bi-house-check"></i>
+                            </div>
+
+                            <div class="ms-3 flex-grow-1">
+                                <h6 class="mb-1">Safety Guidelines</h6>
+                                <p class="small text-muted mb-0">
+                                    Prepare for potential landslides
+                                </p>
+                            </div>
+
+                            <i class="bi bi-chevron-right"></i>
+                        </div>
+                    </a>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <!-- Recent Activities -->
+        <div class="stat-card recent-activities-card mb-4">
+            <div class="mb-3">
+                <h5 class="mb-1">Recent Activities</h5>
+                <p class="small text-muted mb-0">Quick access to the latest project information and mapped locations.</p>
+            </div>
+
+            <div class="row g-3">
+                <div class="col-md-6">
+                    <a href="#" class="recent-activity-link" data-bs-toggle="offcanvas" data-bs-target="#siteOffcanvas" data-panel-tab="#panel-news-tab" aria-controls="siteOffcanvas">
+                        <div class="recent-activity-icon"><i class="bi bi-newspaper"></i></div>
+                        <div class="flex-grow-1">
+                            <h6 class="mb-1">News & Updates</h6>
+                            <p class="small text-muted mb-0">Read safety bulletins and project updates.</p>
+                        </div>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+
+                <div class="col-md-6">
+                    <a href="map.html" class="recent-activity-link">
+                        <div class="recent-activity-icon"><i class="bi bi-map"></i></div>
+                        <div class="flex-grow-1">
+                            <h6 class="mb-1">Interactive Map</h6>
+                            <p class="small text-muted mb-0">Explore example landslide locations across Myanmar.</p>
+                        </div>
+                        <i class="bi bi-arrow-up-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Disclaimer -->
+        <div class="data-disclaimer mb-4">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <strong>Note:</strong> All numerical readings and alerts displayed on this
+            dashboard are illustrative sample data for demonstration purposes.
+            They do not represent live monitoring or official government warnings.
+        </div>
+
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="pb-3 pt-5 mt-auto" id="foota">
+        <div class="container">
+
+            <div class="row">
+
+                <div class="col-md-3 mb-3">
+                    <h5 class="mb-3">Myanmar Landslide Division</h5>
+                    <p>Monitoring landslide risks and promoting safer communities.</p>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+                        <li><a href="map.html" class="nav-link">Map</a></li>
+                        <li><a href="services.html" class="nav-link">Services</a></li>
+                        <li><a href="about_us.html#contact" class="nav-link">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <h5 class="mb-3">Information</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="preparation.html" class="nav-link">Prevention</a></li>
+                        <li><a href="preparation.html" class="nav-link">Safety Guidelines</a></li>
+                        <li><a href="map.html" class="nav-link">Warnings</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-3 mb-3">
+                    <h5 class="mb-3">Contact</h5>
+                    <p>Email: mld@myanmar.gov.mm</p>
+                    <p>Phone: +95 9441687843</p>
+                </div>
+
+            </div>
+
+            <hr>
+
+            <div class="text-center">
+                <p class="mb-0">
+                    &copy; 2026 Myanmar Landslide Division. All Rights Reserved.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <script>
+        const states = [
+            { name: "Kachin", lat: 25.383, lng: 97.400 },
+            { name: "Kayah", lat: 19.675, lng: 97.209 },
+            { name: "Kayin", lat: 16.889, lng: 97.634 },
+            { name: "Chin", lat: 22.650, lng: 93.610 },
+            { name: "Mon", lat: 16.491, lng: 97.628 },
+            { name: "Rakhine", lat: 20.147, lng: 92.898 },
+            { name: "Shan", lat: 20.789, lng: 97.037 },
+            { name: "Ayeyarwady", lat: 16.779, lng: 94.732 },
+            { name: "Bago", lat: 17.336, lng: 96.481 },
+            { name: "Magway", lat: 20.150, lng: 94.932 },
+            { name: "Mandalay", lat: 21.975, lng: 96.084 },
+            { name: "Sagaing", lat: 22.109, lng: 95.136 },
+            { name: "Tanintharyi", lat: 14.083, lng: 98.200 },
+            { name: "Yangon", lat: 16.841, lng: 96.173 },
+            { name: "Nay Pyi Taw", lat: 19.763, lng: 96.078 }
+        ];
+
+        const mapBox = document.getElementById("map");
+
+        if (typeof L === "undefined") {
+            mapBox.innerHTML = '<p class="p-3 small">The map could not load. Please check your internet connection.</p>';
+        } else {
+            const map = L.map("map").setView([21.0, 96.0], 5);
+
+            L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                maxZoom: 18,
+                attribution: "&copy; OpenStreetMap contributors"
+            }).addTo(map);
+
+            states.forEach(s => {
+                L.circleMarker([s.lat, s.lng], {
+                    radius: 6,
+                    color: "#ffffff",
+                    weight: 2,
+                    fillColor: "#d9534f",
+                    fillOpacity: 0.9
+                })
+                    .bindTooltip(s.name, { direction: "top" })
+                    .bindPopup("<b>" + s.name + "</b>")
+                    .addTo(map);
+            });
+
+            map.fitBounds(L.latLngBounds(states.map(s => [s.lat, s.lng])), { padding: [30, 30] });
+        }
+    </script>
+
+    <!-- General Offcanvas -->
+    <div class="offcanvas offcanvas-end site-offcanvas" tabindex="-1" id="siteOffcanvas" aria-labelledby="siteOffcanvasLabel">
+        <div class="offcanvas-header">
+            <div>
+                <h5 class="offcanvas-title mb-1" id="siteOffcanvasLabel">Explore M.L.D.</h5>
+                <p class="small mb-0">Maps, news and useful information</p>
+            </div>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body">
+            <ul class="nav nav-pills site-panel-tabs mb-3" id="sitePanelTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="panel-map-tab" data-bs-toggle="pill" data-bs-target="#panel-map" type="button" role="tab" aria-controls="panel-map" aria-selected="true">
+                        <i class="bi bi-map me-1"></i> Map
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="panel-news-tab" data-bs-toggle="pill" data-bs-target="#panel-news" type="button" role="tab" aria-controls="panel-news" aria-selected="false">
+                        <i class="bi bi-newspaper me-1"></i> News & Updates
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="panel-map" role="tabpanel" aria-labelledby="panel-map-tab" tabindex="0">
+                    <div id="offcanvasMap" class="offcanvas-map"></div>
+                    <p class="small text-muted mt-3 mb-2">This map displays sample locations for the project. It is not a live warning map.</p>
+                    <a href="map.html" class="btn btn-theme btn-sm">Open Full Map <i class="bi bi-arrow-right ms-1"></i></a>
+                </div>
+
+                <div class="tab-pane fade" id="panel-news" role="tabpanel" aria-labelledby="panel-news-tab" tabindex="0">
+                    <div class="news-notice mb-3">
+                        <i class="bi bi-info-circle-fill me-2"></i>
+                        These are sample educational updates for the project, not official government announcements.
+                    </div>
+
+                    <article class="site-news-item">
+                        <span class="badge news-label">Safety Bulletin</span>
+                        <h6 class="mt-2 mb-1">Rainfall and slope stability</h6>
+                        <p class="small text-muted mb-2">Prolonged or intense rainfall can saturate soil and increase landslide risk. Pay attention to official local advisories and changes such as ground cracks or unusual water flow.</p>
+                        <a href="preparation.html" class="small">Read safety guidance <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="site-news-item">
+                        <span class="badge news-label">Preparedness Update</span>
+                        <h6 class="mt-2 mb-1">Plan ahead before severe weather</h6>
+                        <p class="small text-muted mb-2">Know your evacuation routes, identify safer locations and keep important emergency contacts accessible before heavy rain begins.</p>
+                        <a href="preparation.html" class="small">View preparation tips <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="site-news-item">
+                        <span class="badge news-label">Map Information</span>
+                        <h6 class="mt-2 mb-1">Explore mapped landslide locations</h6>
+                        <p class="small text-muted mb-2">The interactive map is included to help visitors explore example locations and understand how hazard information can be presented.</p>
+                        <a href="map.html" class="small">Explore the map <i class="bi bi-arrow-right"></i></a>
+                    </article>
+                    <div class="mt-3"><a href="articles.html" class="btn btn-theme btn-sm w-100">View all articles <i class="bi bi-arrow-right ms-1"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Open the General Offcanvas -->
+    <button type="button" class="btn site-offcanvas-button" data-bs-toggle="offcanvas" data-bs-target="#siteOffcanvas" aria-controls="siteOffcanvas">
+        <i class="bi bi-grid-fill"></i> Explore
+    </button>
+
+    <script>
+        (function () {
+            const panel = document.getElementById("siteOffcanvas");
+            const mapCanvas = document.getElementById("offcanvasMap");
+            const mapTab = document.getElementById("panel-map-tab");
+            let previewMap = null;
+
+            function showPreviewMap() {
+                if (typeof L === "undefined") {
+                    mapCanvas.innerHTML = '<p class="p-3 small">The map could not load. Please check your internet connection.</p>';
+                    return;
+                }
+
+                if (!previewMap) {
+                    previewMap = L.map("offcanvasMap").setView([21.9, 96.0], 5);
+
+                    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                        maxZoom: 18,
+                        attribution: "&copy; OpenStreetMap contributors"
+                    }).addTo(previewMap);
+
+                    const locations = [
+                        { name: "Dawei District, Tanintharyi", lat: 14.083, lng: 98.200, color: "#d9534f" },
+                        { name: "Monghsu Township, Shan", lat: 21.917, lng: 98.383, color: "#f0ad4e" },
+                        { name: "Hpakant, Kachin", lat: 25.613, lng: 96.311, color: "#d9534f" },
+                        { name: "Rezua, Chin", lat: 22.053, lng: 93.409, color: "#5cb85c" },
+                        { name: "Tangyan Township, Shan", lat: 22.483, lng: 98.400, color: "#f0ad4e" },
+                        { name: "Naungmon Township, Kachin", lat: 27.500, lng: 97.817, color: "#5cb85c" },
+                        { name: "Pang War, Kachin", lat: 25.594, lng: 98.379, color: "#f0ad4e" }
+                    ];
+
+                    locations.forEach(function (location) {
+                        L.circleMarker([location.lat, location.lng], {
+                            radius: 7,
+                            color: "white",
+                            weight: 2,
+                            fillColor: location.color,
+                            fillOpacity: 0.9
+                        }).bindPopup(location.name).addTo(previewMap);
+                    });
+                }
+
+                previewMap.invalidateSize();
+            }
+
+            panel.addEventListener("shown.bs.offcanvas", function () {
+                if (mapTab.classList.contains("active")) {
+                    showPreviewMap();
+                }
+            });
+
+            mapTab.addEventListener("shown.bs.tab", showPreviewMap);
+
+            document.querySelectorAll("[data-panel-tab]").forEach(function (link) {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const tabButton = document.querySelector(link.getAttribute("data-panel-tab"));
+
+                    if (tabButton && window.bootstrap) {
+                        bootstrap.Tab.getOrCreateInstance(tabButton).show();
+                    }
+                });
+            });
+        })();
+    </script>
+
+</body>
+
+</html>

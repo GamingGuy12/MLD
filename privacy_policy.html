@@ -1,0 +1,912 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | M.L.D.</title>
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        :root {
+            --mld-green: #6b8f71;
+            --mld-dark: #315b3b;
+            --mld-pale: #edf3ed;
+            --mld-ink: #26342a;
+            --mld-muted: #68736a;
+        }
+
+        body {
+            background: #f5f7f4;
+            color: var(--mld-ink);
+        }
+
+        .privacy-hero {
+            background: linear-gradient(115deg, #e8f0e8 0%, #f7f8f5 72%);
+            border-bottom: 1px solid #dce6dc;
+            padding: 62px 0 48px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .privacy-hero::after {
+            content: "§";
+            position: absolute;
+            right: 9%;
+            top: -55px;
+            font-family: Georgia, serif;
+            font-size: 290px;
+            line-height: 1;
+            color: rgba(107, 143, 113, .08);
+            pointer-events: none;
+        }
+
+        .hero-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--mld-dark);
+            background: #dce9dd;
+            border-radius: 3px;
+            padding: 7px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .page-title {
+            font-size: clamp(2.4rem, 5vw, 4rem);
+            font-weight: 750;
+            letter-spacing: -1.8px;
+            line-height: 1.08;
+            margin-bottom: 18px;
+            color: #263b2b;
+        }
+
+        .page-title span {
+            color: var(--mld-green);
+        }
+
+        .page-description {
+            max-width: 760px;
+            color: #59665c;
+            line-height: 1.85;
+            font-size: 16px;
+            margin: 0;
+        }
+
+        .privacy-content {
+            padding-top: 42px;
+            padding-bottom: 65px;
+        }
+
+        .section-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 9px;
+            padding: 18px;
+            background: #fff;
+            border: 1px solid #e2e9e1;
+            border-radius: 8px;
+            margin-bottom: 38px;
+        }
+
+        .section-nav a {
+            color: #526354;
+            text-decoration: none;
+            background: #f3f6f2;
+            border: 1px solid #e7ece5;
+            padding: 9px 13px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            transition: .2s ease;
+        }
+
+        .section-nav a:hover {
+            color: #fff;
+            background: var(--mld-green);
+            border-color: var(--mld-green);
+        }
+
+        .content-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 20px;
+            margin-bottom: 22px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #dce5dc;
+        }
+
+        .content-heading h2 {
+            font-size: 23px;
+            font-weight: 750;
+            margin: 0;
+            color: #2d4331;
+        }
+
+        .content-heading p {
+            color: var(--mld-muted);
+            font-size: 13px;
+            margin: 0;
+        }
+
+        .privacy-section {
+            display: grid;
+            grid-template-columns: 76px minmax(0, 1fr);
+            gap: 24px;
+            padding: 28px 0 31px;
+            border-bottom: 1px solid #e0e7df;
+            scroll-margin-top: 110px;
+        }
+
+        .section-number {
+            width: 58px;
+            height: 58px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--mld-dark);
+            background: #e5eee5;
+            border: 1px solid #d3e1d3;
+            border-radius: 50%;
+            font-size: 18px;
+            font-weight: 750;
+        }
+
+        .privacy-section h3 {
+            font-size: 20px;
+            font-weight: 750;
+            color: #385c3e;
+            margin: 2px 0 14px;
+        }
+
+        .privacy-section p {
+            color: #626d64;
+            line-height: 1.85;
+            margin-bottom: 11px;
+        }
+
+        .privacy-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .privacy-section ul {
+            color: #626d64;
+            line-height: 1.9;
+            padding-left: 22px;
+            margin-bottom: 12px;
+        }
+
+        .privacy-note {
+            background: #eaf1e9;
+            border-left: 4px solid var(--mld-green);
+            padding: 22px 25px;
+            margin-top: 35px;
+            color: #536356;
+            line-height: 1.8;
+        }
+
+        .contact-strip {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            padding: 23px 25px;
+            margin-top: 20px;
+            background: #fff;
+            border: 1px solid #e1e8e0;
+            border-radius: 7px;
+        }
+
+        .contact-strip p {
+            margin: 0;
+            color: #566258;
+        }
+
+        .contact-strip a {
+            color: var(--mld-dark);
+            font-weight: 700;
+        }
+
+        .modal-header {
+            background-color: var(--mld-green);
+            color: white;
+        }
+
+        .modal-header .btn-close {
+            filter: brightness(0) invert(1);
+        }
+
+        @media (max-width: 768px) {
+            .privacy-hero {
+                padding: 42px 0 35px;
+            }
+
+            .privacy-hero::after {
+                right: -20px;
+                font-size: 190px;
+            }
+
+            .privacy-content {
+                padding-top: 25px;
+            }
+
+            .section-nav {
+                padding: 13px;
+                gap: 7px;
+            }
+
+            .section-nav a {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+
+            .privacy-section {
+                grid-template-columns: 48px minmax(0, 1fr);
+                gap: 13px;
+                padding: 23px 0;
+            }
+
+            .section-number {
+                width: 42px;
+                height: 42px;
+                font-size: 15px;
+            }
+
+            .privacy-section h3 {
+                font-size: 18px;
+            }
+
+            .content-heading {
+                align-items: start;
+                flex-direction: column;
+            }
+
+            .contact-strip {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body class="d-flex flex-column min-vh-100">
+
+<nav class="navbar navbar-expand-lg">
+    <div class="container d-flex align-items-center justify-content-between">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <img src="Myanmar Landslide Division.png" alt="MLD Logo" height="50" class="me-3">
+            <div>
+                <h4 class="mb-0">M.L.D</h4>
+                <p class="mb-0 small">Myanmar Landslide Division</p>
+            </div>
+        </a>
+
+        <form class="input-group w-50 search-bar">
+            <input class="form-control" type="search" placeholder="Search for...">
+            <span class="input-group-text bg-white">
+                <i class="bi bi-search"></i>
+            </span>
+        </form>
+
+        <div class="d-flex">
+            <button type="button" class="btn me-2 log" data-bs-toggle="modal" data-bs-target="#SignIn">
+                Sign In
+            </button>
+
+            <button type="button" class="btn sign" data-bs-toggle="modal" data-bs-target="#SignUp">
+                Sign Up
+            </button>
+        </div>
+    </div>
+</nav>
+
+<div class="sticky-nav">
+    <nav class="navbar navbar-expand-lg nav_btm">
+        <div class="container d-flex align-items-center justify-content-between">
+
+            <div class="collapse navbar-collapse" id="menu">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="about_us.html" class="nav-link">About Us</a></li>
+                </ul>
+            </div>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+        </div>
+    </nav>
+</div>
+
+<main class="flex-grow-1">
+
+    <section class="privacy-hero">
+        <div class="container">
+
+            <div class="hero-label">
+                <i class="bi bi-shield-lock"></i>
+                Privacy information
+            </div>
+
+            <h1 class="page-title">
+                Privacy <span>Policy</span>
+            </h1>
+
+            <p class="page-description">
+                Welcome to Myanmar Landslide Division (M.L.D.). This Privacy Policy explains how information may be collected, used, and handled when you visit our website or use its services. We respect your privacy and aim to be clear about how information is managed.
+            </p>
+
+        </div>
+    </section>
+
+    <div class="container privacy-content">
+
+        <nav class="section-nav" aria-label="Privacy policy sections">
+            <a href="#introduction">01 · Introduction</a>
+            <a href="#collection">02 · Information Collection</a>
+            <a href="#usage">03 · Use of Information</a>
+            <a href="#location">04 · Location Information</a>
+            <a href="#sharing">05 · Information Sharing</a>
+            <a href="#security">06 · Data Security</a>
+            <a href="#retention">07 · Data Retention</a>
+            <a href="#rights">08 · User Responsibilities</a>
+            <a href="#updates">09 · Policy Updates</a>
+        </nav>
+
+        <div class="content-heading">
+            <h2>Website privacy information</h2>
+            <p>Myanmar Landslide Division · M.L.D.</p>
+        </div>
+
+        <section class="privacy-section" id="introduction">
+            <div class="section-number">01</div>
+
+            <div>
+                <h3>1. Introduction</h3>
+
+                <p>
+                    Myanmar Landslide Division (M.L.D.) is a digital platform designed to provide landslide-related information, hazard awareness, emergency service details, and disaster preparedness resources across Myanmar.
+                </p>
+
+                <p>
+                    This Privacy Policy describes the types of information that may be collected when users visit the website, submit reports, or use available features.
+                </p>
+
+                <p>
+                    By using this website, you acknowledge that you have read this Privacy Policy.
+                </p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="collection">
+            <div class="section-number">02</div>
+
+            <div>
+                <h3>2. Information We Collect</h3>
+
+                <p>
+                    Depending on the features used, M.L.D. may collect information that users voluntarily provide through website forms.
+                </p>
+
+                <p>Examples of information may include:</p>
+
+                <ul>
+                    <li>Name or username.</li>
+                    <li>Email address and contact details.</li>
+                    <li>Location details provided in disaster reports.</li>
+                    <li>Descriptions of landslide incidents or hazards.</li>
+                    <li>Messages and enquiries submitted through contact forms.</li>
+                </ul>
+
+                <p>
+                    Some basic technical information, such as browser type and pages visited, may also be recorded by website hosting or analytics services if those services are used.
+                </p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="usage">
+            <div class="section-number">03</div>
+
+            <div>
+                <h3>3. How We Use Information</h3>
+
+                <p>
+                    Information provided by users may be used to support the operation and improvement of the M.L.D. platform.
+                </p>
+
+                <p>Possible uses include:</p>
+
+                <ul>
+                    <li>Responding to questions and enquiries.</li>
+                    <li>Reviewing submitted landslide and hazard reports.</li>
+                    <li>Providing relevant disaster-related information.</li>
+                    <li>Improving website features and user experience.</li>
+                    <li>Supporting disaster awareness and preparedness activities.</li>
+                </ul>
+
+                <p>
+                    Information should only be used for purposes connected to the services and functions of the platform.
+                </p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="location">
+            <div class="section-number">04</div>
+
+            <div>
+                <h3>4. Location Information</h3>
+
+                <p>
+                    Location information may be provided by users when submitting a landslide report or using location-related website features.
+                </p>
+
+                <p>
+                    This information can help identify reported hazard locations and provide more relevant geographical information.
+                </p>
+
+                <p>
+                    If a website feature requests access to your device location, your browser or device may ask for permission. You can manage or deny this permission through your device or browser settings.
+                </p>
+
+                <p>
+                    Users should avoid submitting unnecessary personal location details when they are not relevant to a report or enquiry.
+                </p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="sharing">
+            <div class="section-number">05</div>
+
+            <div>
+                <h3>5. Information Sharing</h3>
+
+                <p>
+                    M.L.D. does not intend to make users' personal information publicly available without an appropriate reason.
+                </p>
+
+                <p>
+                    Information may need to be shared with relevant organisations or service providers when necessary to process enquiries, review disaster reports, or support related services.
+                </p>
+
+                <p>
+                    Information may also be disclosed when required by applicable laws or lawful requests from relevant authorities.
+                </p>
+
+                <p>
+                    Users should understand that information submitted to external websites or services is handled according to those services' own privacy policies.
+                </p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="security">
+            <div class="section-number">06</div>
+
+            <div>
+                <h3>6. Data Security</h3>
+
+                <p>
+                    Protecting user information is important. Appropriate measures should be taken to help prevent unauthorised access, misuse, alteration, or disclosure of information.
+                </p>
+
+                <p>
+                    However, no website or method of electronic transmission can be guaranteed to be completely secure.
+                </p>
+
+                <p>
+                    Users should avoid sharing passwords, financial information, or other sensitive personal details through public forms or messages.
+                </p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="retention">
+            <div class="section-number">07</div>
+
+            <div>
+                <h3>7. Data Retention</h3>
+
+                <p>
+                    Information submitted through the website may be kept for as long as necessary to handle enquiries, review reports, support platform functions, or meet relevant legal requirements.
+                </p>
+
+                <p>
+                    Information that is no longer needed should be reviewed and handled appropriately.
+                </p>
+
+                <p>
+                    The actual retention period may depend on the type of information and the purpose for which it was collected.
+                </p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="rights">
+            <div class="section-number">08</div>
+
+            <div>
+                <h3>8. User Responsibilities</h3>
+
+                <p>
+                    Users are encouraged to provide accurate information when submitting forms, reports, or enquiries.
+                </p>
+
+                <p>
+                    Users should only submit personal information that is necessary for the service they are using.
+                </p>
+
+                <p>
+                    Users should not share another person's private information without an appropriate reason or permission.
+                </p>
+
+                <p>
+                    If you have concerns about information you have submitted, you may contact the M.L.D. team for assistance.
+                </p>
+            </div>
+        </section>
+
+        <section class="privacy-section" id="updates">
+            <div class="section-number">09</div>
+
+            <div>
+                <h3>9. Changes to This Privacy Policy</h3>
+
+                <p>
+                    M.L.D. may update this Privacy Policy when website features, services, or information-handling practices change.
+                </p>
+
+                <p>
+                    Updated versions will be published on this page. Users are encouraged to review this page periodically to stay informed.
+                </p>
+
+                <p>
+                    Continued use of the website after changes are published means that users acknowledge the updated policy.
+                </p>
+            </div>
+        </section>
+
+        <div class="privacy-note">
+            <strong>
+                <i class="bi bi-info-circle me-2"></i>
+                Important notice
+            </strong>
+            <br>
+
+            Please avoid submitting passwords, financial information, or unnecessary sensitive personal details through this website. This Privacy Policy describes the intended handling of information and does not guarantee that every website feature or data-handling process is currently active.
+        </div>
+
+        <div class="contact-strip">
+            <p>
+                <strong>Have questions about your privacy?</strong>
+                <br>
+                Contact the Myanmar Landslide Division team.
+            </p>
+
+            <a href="mailto:mld@myanmar.gov.mm">
+                mld@myanmar.gov.mm
+                <i class="bi bi-arrow-up-right"></i>
+            </a>
+        </div>
+
+    </div>
+
+</main>
+
+<footer class="pb-3 pt-5 mt-auto">
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-md-3 mb-3">
+                <h5 class="mb-3">Myanmar Landslide Division</h5>
+                <p>Reliable Landslide Information and Emergency Services at Your Fingertips.</p>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <h5 class="mb-3">Quick Links</h5>
+
+                <ul class="list-unstyled text-muted">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="map.html" class="nav-link">Map</a></li>
+                    <li><a href="services.html" class="nav-link">Services</a></li>
+                    <li><a href="about_us.html#contact" class="nav-link">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <h5 class="mb-3">Legal Information</h5>
+
+                <ul class="list-unstyled text-muted">
+                    <li><a href="terms_and_conditions.html" class="nav-link">Terms and Conditions</a></li>
+                    <li><a href="privacy_policy.html" class="nav-link">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <h5 class="mb-3">Contact</h5>
+                <p>Email: mld@myanmar.gov.mm</p>
+                <p>Phone: +95 9441687843</p>
+            </div>
+
+        </div>
+
+        <hr>
+
+        <div class="text-center">
+            <p class="mb-0">&copy; 2026 Myanmar Landslide Division. All Rights Reserved.</p>
+        </div>
+
+    </div>
+</footer>
+
+<div class="modal fade" id="SignIn" tabindex="-1">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Sign In</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Email</label>
+
+                    <div class="input-group">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-envelope"></i>
+                        </span>
+
+                        <input type="email" class="form-control" placeholder="name@gmail.com">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Password</label>
+
+                    <div class="input-group">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-lock"></i>
+                        </span>
+
+                        <input type="password" class="form-control" placeholder="Password123">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer d-flex flex-column">
+                <button type="button" class="btn log w-100">Sign In</button>
+
+                <a href="#SignUp" data-bs-toggle="modal" data-bs-target="#SignUp" data-bs-dismiss="modal">
+                    Don't have an account?
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="SignUp" tabindex="-1">
+    <div class="modal-dialog modal-md modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title">Register</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Username</label>
+
+                    <div class="input-group">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-person"></i>
+                        </span>
+
+                        <input type="text" class="form-control" placeholder="JohnDoe">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Email</label>
+
+                    <div class="input-group">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-envelope"></i>
+                        </span>
+
+                        <input type="email" class="form-control" placeholder="name@gmail.com">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Password</label>
+
+                    <div class="input-group">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-lock"></i>
+                        </span>
+
+                        <input type="password" class="form-control" placeholder="Password123">
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Retype Password</label>
+
+                    <div class="input-group">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-lock"></i>
+                        </span>
+
+                        <input type="password" class="form-control" placeholder="Password123">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer d-flex flex-column">
+                <button type="button" class="btn sign w-100">Sign Up</button>
+
+                <a href="#SignIn" data-bs-toggle="modal" data-bs-target="#SignIn" data-bs-dismiss="modal">
+                    Already have an account?
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- General Offcanvas -->
+    <div class="offcanvas offcanvas-end site-offcanvas" tabindex="-1" id="siteOffcanvas" aria-labelledby="siteOffcanvasLabel">
+        <div class="offcanvas-header">
+            <div>
+                <h5 class="offcanvas-title mb-1" id="siteOffcanvasLabel">Explore M.L.D.</h5>
+                <p class="small mb-0">Maps, news and useful information</p>
+            </div>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body">
+            <ul class="nav nav-pills site-panel-tabs mb-3" id="sitePanelTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="panel-map-tab" data-bs-toggle="pill" data-bs-target="#panel-map" type="button" role="tab" aria-controls="panel-map" aria-selected="true">
+                        <i class="bi bi-map me-1"></i> Map
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="panel-news-tab" data-bs-toggle="pill" data-bs-target="#panel-news" type="button" role="tab" aria-controls="panel-news" aria-selected="false">
+                        <i class="bi bi-newspaper me-1"></i> News & Updates
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="panel-map" role="tabpanel" aria-labelledby="panel-map-tab" tabindex="0">
+                    <div id="offcanvasMap" class="offcanvas-map"></div>
+                    <p class="small text-muted mt-3 mb-2">This map displays sample locations for the project. It is not a live warning map.</p>
+                    <a href="map.html" class="btn btn-theme btn-sm">Open Full Map <i class="bi bi-arrow-right ms-1"></i></a>
+                </div>
+
+                <div class="tab-pane fade" id="panel-news" role="tabpanel" aria-labelledby="panel-news-tab" tabindex="0">
+                    <div class="news-notice mb-3">
+                        <i class="bi bi-info-circle-fill me-2"></i>
+                        These are sample educational updates for the project, not official government announcements.
+                    </div>
+
+                    <article class="site-news-item">
+                        <span class="badge news-label">Safety Bulletin</span>
+                        <h6 class="mt-2 mb-1">Rainfall and slope stability</h6>
+                        <p class="small text-muted mb-2">Prolonged or intense rainfall can saturate soil and increase landslide risk. Pay attention to official local advisories and changes such as ground cracks or unusual water flow.</p>
+                        <a href="preparation.html" class="small">Read safety guidance <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="site-news-item">
+                        <span class="badge news-label">Preparedness Update</span>
+                        <h6 class="mt-2 mb-1">Plan ahead before severe weather</h6>
+                        <p class="small text-muted mb-2">Know your evacuation routes, identify safer locations and keep important emergency contacts accessible before heavy rain begins.</p>
+                        <a href="preparation.html" class="small">View preparation tips <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="site-news-item">
+                        <span class="badge news-label">Map Information</span>
+                        <h6 class="mt-2 mb-1">Explore mapped landslide locations</h6>
+                        <p class="small text-muted mb-2">The interactive map is included to help visitors explore example locations and understand how hazard information can be presented.</p>
+                        <a href="map.html" class="small">Explore the map <i class="bi bi-arrow-right"></i></a>
+                    </article>
+                    <div class="mt-3"><a href="articles.html" class="btn btn-theme btn-sm w-100">View all articles <i class="bi bi-arrow-right ms-1"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Open the General Offcanvas -->
+    <button type="button" class="btn site-offcanvas-button" data-bs-toggle="offcanvas" data-bs-target="#siteOffcanvas" aria-controls="siteOffcanvas">
+        <i class="bi bi-grid-fill"></i> Explore
+    </button>
+
+    <script>
+        (function () {
+            const panel = document.getElementById("siteOffcanvas");
+            const mapCanvas = document.getElementById("offcanvasMap");
+            const mapTab = document.getElementById("panel-map-tab");
+            let previewMap = null;
+
+            function showPreviewMap() {
+                if (typeof L === "undefined") {
+                    mapCanvas.innerHTML = '<p class="p-3 small">The map could not load. Please check your internet connection.</p>';
+                    return;
+                }
+
+                if (!previewMap) {
+                    previewMap = L.map("offcanvasMap").setView([21.9, 96.0], 5);
+
+                    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                        maxZoom: 18,
+                        attribution: "&copy; OpenStreetMap contributors"
+                    }).addTo(previewMap);
+
+                    const locations = [
+                        { name: "Dawei District, Tanintharyi", lat: 14.083, lng: 98.200, color: "#d9534f" },
+                        { name: "Monghsu Township, Shan", lat: 21.917, lng: 98.383, color: "#f0ad4e" },
+                        { name: "Hpakant, Kachin", lat: 25.613, lng: 96.311, color: "#d9534f" },
+                        { name: "Rezua, Chin", lat: 22.053, lng: 93.409, color: "#5cb85c" },
+                        { name: "Tangyan Township, Shan", lat: 22.483, lng: 98.400, color: "#f0ad4e" },
+                        { name: "Naungmon Township, Kachin", lat: 27.500, lng: 97.817, color: "#5cb85c" },
+                        { name: "Pang War, Kachin", lat: 25.594, lng: 98.379, color: "#f0ad4e" }
+                    ];
+
+                    locations.forEach(function (location) {
+                        L.circleMarker([location.lat, location.lng], {
+                            radius: 7,
+                            color: "white",
+                            weight: 2,
+                            fillColor: location.color,
+                            fillOpacity: 0.9
+                        }).bindPopup(location.name).addTo(previewMap);
+                    });
+                }
+
+                previewMap.invalidateSize();
+            }
+
+            panel.addEventListener("shown.bs.offcanvas", function () {
+                if (mapTab.classList.contains("active")) {
+                    showPreviewMap();
+                }
+            });
+
+            mapTab.addEventListener("shown.bs.tab", showPreviewMap);
+
+            document.querySelectorAll("[data-panel-tab]").forEach(function (link) {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const tabButton = document.querySelector(link.getAttribute("data-panel-tab"));
+
+                    if (tabButton && window.bootstrap) {
+                        bootstrap.Tab.getOrCreateInstance(tabButton).show();
+                    }
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>
+```

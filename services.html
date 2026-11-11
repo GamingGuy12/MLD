@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Services</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #f7f8f7;
+        }
+ 
+        .emergency-banner img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+ 
+        .page-title {
+            text-align: center;
+            margin: 30px 0 10px;
+            font-weight: bold;
+        }
+ 
+        .page-title span {
+            color: #6b8f71;
+        }
+ 
+        .page-description {
+            text-align: center;
+            color: #666;
+            margin-bottom: 35px;
+        }
+ 
+        .service-section {
+            display: flex;
+            gap: 20px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 10px #00000010;
+        }
+ 
+        .service-icon {
+            width: 65px;
+            height: 65px;
+            min-width: 65px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f1f3f1;
+            border-radius: 12px;
+            font-size: 30px;
+            cursor: pointer;
+        }
+ 
+        .service-content {
+            flex: 1;
+        }
+ 
+        .service-content h3 {
+            font-size: 21px;
+            font-weight: bold;
+        }
+ 
+        .service-content p,
+        .service-content li {
+            color: #666;
+        }
+ 
+        .service-button,
+        .action-button {
+            background-color: #6b8f71;
+            color: white;
+            border: none;
+            padding: 9px 16px;
+            border-radius: 7px;
+            text-decoration: none;
+            display: inline-block;
+        }
+ 
+        .service-button:hover,
+        .action-button:hover {
+            background-color: #52745a;
+            color: white;
+        }
+ 
+        .modal-header {
+            background-color: #6b8f71;
+            color: white;
+        }
+ 
+        .modal-header .btn-close {
+            filter: brightness(0) invert(1);
+        }
+ 
+        .info-card {
+            background-color: #f7f9f7;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 12px;
+        }
+ 
+        @media (max-width: 576px) {
+            .service-section {
+                padding: 15px;
+                gap: 12px;
+            }
+ 
+            .service-icon {
+                width: 50px;
+                height: 50px;
+                min-width: 50px;
+                font-size: 24px;
+            }
+ 
+            .service-content h3 {
+                font-size: 17px;
+            }
+        }
+    </style>
+</head>
+ 
+<body class="d-flex flex-column min-vh-100">
+ 
+    <nav class="navbar navbar-expand-lg">
+        <div class="container d-flex align-items-center justify-content-between">
+ 
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="Myanmar Landslide Division.png" height="50" class="me-3">
+                <div>
+                    <h4 class="mb-0">M.L.D</h4>
+                    <p class="mb-0 small">Myanmar Landslide Division</p>
+                </div>
+            </a>
+ 
+            <form class="input-group w-50 search-bar">
+                <input class="form-control" type="search" placeholder="Search for..." id="SearchBar">
+                <span class="input-group-text">
+                    <i class="bi bi-search"></i>
+                </span>
+            </form>
+ 
+            <div>
+                <button class="btn me-2 log" data-bs-toggle="modal" data-bs-target="#SignIn">
+                    Sign In
+                </button>
+ 
+                <button class="btn sign" data-bs-toggle="modal" data-bs-target="#SignUp">
+                    Sign Up
+                </button>
+            </div>
+ 
+        </div>
+    </nav>
+ 
+    <div class="sticky-nav">
+        <nav class="navbar navbar-expand-lg nav_btm">
+            <div class="container">
+ 
+                <div class="collapse navbar-collapse" id="menu">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                        <li class="nav-item"><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                        <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+                        <li class="nav-item"><a href="about_us.html" class="nav-link">About Us</a></li>
+                    </ul>
+                </div>
+ 
+                <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+ 
+            </div>
+        </nav>
+    </div>
+ 
+    <main class="flex-grow-1">
+ 
+        <div class="emergency-banner">
+            <img src="images/servicesHero.jpg" alt="Landslide damage">
+        </div>
+ 
+        <div class="container py-3">
+ 
+            <h2 class="page-title"><span>Emergency</span> Services</h2>
+ 
+            <p class="page-description">
+                Access emergency contacts, find nearby assistance and request disaster relief.
+            </p>
+ 
+            <section class="service-section">
+ 
+                <div class="service-icon" data-bs-toggle="modal" data-bs-target="#EmergencyRescue">
+                    <i class="bi bi-telephone-plus-fill text-danger"></i>
+                </div>
+ 
+                <div class="service-content">
+                    <h3>Emergency & Rescue Services</h3>
+                    <p>Contact emergency rescue teams and find help during a landslide.</p>
+ 
+                    <ul>
+                        <li>Search and rescue.</li>
+                        <li>Emergency evacuation.</li>
+                        <li>First aid.</li>
+                        <li>Finding missing people.</li>
+                    </ul>
+ 
+                    <button class="service-button" data-bs-toggle="modal" data-bs-target="#EmergencyRescue">
+                        Emergency Contacts
+                    </button>
+                </div>
+ 
+            </section>
+ 
+            <section class="service-section">
+ 
+                <div class="service-icon" data-bs-toggle="modal" data-bs-target="#Hospitals">
+                    <i class="bi bi-hospital-fill text-primary"></i>
+                </div>
+ 
+                <div class="service-content">
+                    <h3>Hospitals & Medical Centres</h3>
+                    <p>Find hospitals and medical centres in different regions of Myanmar.</p>
+ 
+                    <ul>
+                        <li>Hospital locations.</li>
+                        <li>Medical treatment.</li>
+                        <li>Ambulance services.</li>
+                    </ul>
+ 
+                    <button class="service-button" data-bs-toggle="modal" data-bs-target="#Hospitals">
+                        Find Hospitals
+                    </button>
+                </div>
+ 
+            </section>
+ 
+            <section class="service-section">
+ 
+                <div class="service-icon" data-bs-toggle="modal" data-bs-target="#Shelters">
+                    <i class="bi bi-house-heart-fill text-success"></i>
+                </div>
+ 
+                <div class="service-content">
+                    <h3>Evacuation Centres & Shelters</h3>
+                    <p>Find temporary accommodation for families affected by landslides.</p>
+ 
+                    <ul>
+                        <li>Temporary accommodation.</li>
+                        <li>Food and drinking water.</li>
+                        <li>Basic necessities.</li>
+                    </ul>
+ 
+                    <button class="service-button" data-bs-toggle="modal" data-bs-target="#Shelters">
+                        Find Shelters
+                    </button>
+                </div>
+ 
+            </section>
+ 
+            <section class="service-section">
+ 
+                <div class="service-icon" data-bs-toggle="modal" data-bs-target="#DisasterManagement">
+                    <i class="bi bi-exclamation-triangle-fill text-warning"></i>
+                </div>
+ 
+                <div class="service-content">
+                    <h3>Disaster Management Offices</h3>
+                    <p>Report landslides, dangerous locations and request assistance.</p>
+ 
+                    <ul>
+                        <li>Submit disaster reports.</li>
+                        <li>Send complaints.</li>
+                        <li>Request government assistance.</li>
+                    </ul>
+ 
+                    <button class="service-button" data-bs-toggle="modal" data-bs-target="#DisasterManagement">
+                        Submit a Report
+                    </button>
+                </div>
+ 
+            </section>
+ 
+            <section class="service-section">
+ 
+                <div class="service-icon" data-bs-toggle="modal" data-bs-target="#HumanitarianAid">
+                    <i class="bi bi-heart-pulse-fill text-danger"></i>
+                </div>
+ 
+                <div class="service-content">
+                    <h3>Humanitarian Aid & Relief</h3>
+                    <p>Request essential supplies for families affected by landslides.</p>
+ 
+                    <ul>
+                        <li>Food and clean water.</li>
+                        <li>Clothing and blankets.</li>
+                        <li>Medical supplies.</li>
+                        <li>Temporary shelter.</li>
+                    </ul>
+ 
+                    <button class="service-button" data-bs-toggle="modal" data-bs-target="#HumanitarianAid">
+                        Request Assistance
+                    </button>
+                </div>
+ 
+            </section>
+ 
+        </div>
+ 
+    </main>
+ 
+    <div class="hero-body">
+        <div class="hero-section hero-background">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-text">
+                        <h1 class="hero-title fw-bold mb-4">Stay Informed. Stay Safe.</h1>
+                        <p class="fs-6 mb-5">Landslides can happen with little warning, especially after prolonged or heavy rainfall. The Myanmar Landslide Division helps communities understand landslide hazards, explore risk information, and learn practical ways to prepare. Use our map and monitoring dashboard to stay aware of conditions in landslide-prone areas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer class="pb-3 pt-5 mt-auto" id="foota">
+        <div class="container">
+ 
+            <div class="row">
+ 
+                <div class="col-md-3 mb-3">
+                    <h5>Myanmar Landslide Division</h5>
+                    <p>Fast, Furious Landslide Tracking at Your Fingertips.</p>
+                </div>
+ 
+                <div class="col-md-3 mb-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="nav-link">Home</a></li>
+                        <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                        <li><a href="map.html" class="nav-link">Map</a></li>
+                        <li><a href="services.html" class="nav-link">Services</a></li>
+                        <li><a href="about_us.html#contact" class="nav-link">Contact Us</a></li>
+                    </ul>
+                </div>
+ 
+                <div class="col-md-3 mb-3">
+                    <h5>Legal Information</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="terms_and_conditions.html" class="nav-link">Terms & Conditions</a></li>
+                        <li><a href="privacy_policy.html" class="nav-link">Privacy Policy</a></li>
+                    </ul>
+                </div>
+ 
+                <div class="col-md-3 mb-3">
+                    <h5>Contact</h5>
+                    <p>Email: mld@myanmar.gov.mm</p>
+                    <p>Phone: +95 9441687843</p>
+                </div>
+ 
+            </div>
+ 
+            <hr>
+ 
+            <p class="text-center mb-0">
+                &copy; 2026 Myanmar Landslide Division. All Rights Reserved.
+            </p>
+ 
+        </div>
+    </footer>
+ 
+    <div class="modal fade" id="EmergencyRescue" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+ 
+                <div class="modal-header">
+                    <h5>Emergency Contacts</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+ 
+                <div class="modal-body">
+ 
+                    <div class="alert alert-danger">
+                        If you are in danger, move to a safer place if possible and contact emergency services.
+                    </div>
+ 
+                    <div class="info-card">
+                        <h5>Fire Services</h5>
+                        <h4>191</h4>
+                        <a href="tel:191" class="action-button">Call</a>
+                    </div>
+ 
+                    <div class="info-card">
+                        <h5>Myanmar Police</h5>
+                        <h4>199</h4>
+                        <a href="tel:199" class="action-button">Call</a>
+                    </div>
+ 
+                    <div class="info-card">
+                        <h5>Ambulance</h5>
+                        <h4>192</h4>
+                        <a href="tel:192" class="action-button">Call</a>
+                    </div>
+ 
+                    <div class="info-card">
+                        <h5>Myanmar Red Cross Society</h5>
+                        <a href="https://www.redcross.org.mm/" target="_blank" class="action-button">
+                            Visit Website
+                        </a>
+                    </div>
+ 
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="modal fade" id="Hospitals" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+ 
+                <div class="modal-header">
+                    <h5>Find Hospitals</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+ 
+                <div class="modal-body">
+ 
+                    <label class="form-label">State / Region</label>
+ 
+                    <select class="form-select mb-3" id="hospitalRegion">
+                        <option value="">Choose region</option>
+                        <option>Yangon Region</option>
+                        <option>Mandalay Region</option>
+                        <option>Ayeyarwady Region</option>
+                        <option>Bago Region</option>
+                        <option>Magway Region</option>
+                        <option>Sagaing Region</option>
+                        <option>Tanintharyi Region</option>
+                        <option>Shan State</option>
+                        <option>Kachin State</option>
+                        <option>Kayin State</option>
+                        <option>Kayah State</option>
+                        <option>Chin State</option>
+                        <option>Mon State</option>
+                        <option>Rakhine State</option>
+                        <option>Naypyidaw Union Territory</option>
+                    </select>
+ 
+                    <label class="form-label">Township (Optional)</label>
+                    <input type="text" class="form-control mb-3" id="hospitalTownship">
+ 
+                    <button class="action-button w-100" onclick="findHospitals()">
+                        Find Hospitals
+                    </button>
+ 
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="modal fade" id="Shelters" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+ 
+                <div class="modal-header">
+                    <h5>Find Shelters</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+ 
+                <div class="modal-body">
+ 
+                    <label class="form-label">State / Region</label>
+ 
+                    <select class="form-select mb-3" id="shelterRegion">
+                        <option value="">Choose region</option>
+                        <option>Yangon Region</option>
+                        <option>Mandalay Region</option>
+                        <option>Ayeyarwady Region</option>
+                        <option>Bago Region</option>
+                        <option>Magway Region</option>
+                        <option>Sagaing Region</option>
+                        <option>Tanintharyi Region</option>
+                        <option>Shan State</option>
+                        <option>Kachin State</option>
+                        <option>Kayin State</option>
+                        <option>Kayah State</option>
+                        <option>Chin State</option>
+                        <option>Mon State</option>
+                        <option>Rakhine State</option>
+                        <option>Naypyidaw Union Territory</option>
+                    </select>
+ 
+                    <label class="form-label">Township (Optional)</label>
+                    <input type="text" class="form-control mb-3" id="shelterTownship">
+ 
+                    <button class="action-button w-100" onclick="findShelters()">
+                        Find Shelters
+                    </button>
+ 
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="modal fade" id="DisasterManagement" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+ 
+                <div class="modal-header">
+                    <h5>Contact Management Office</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+ 
+                <div class="modal-body">
+ 
+                    <form id="disasterForm">
+ 
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control mb-3" id="reportName" required>
+ 
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control mb-3" id="reportEmail" required>
+ 
+                        <label class="form-label">Purpose of Letter</label>
+                        <select class="form-select mb-3" id="reportType" required>
+                            <option value="">Choose purpose</option>
+                            <option>Landslide Incident Report</option>
+                            <option>Dangerous Location Report</option>
+                            <option>Request for Government Assistance</option>
+                            <option>Infrastructure Damage Report</option>
+                            <option>Official Complaint</option>
+                            <option>Other</option>
+                        </select>
+ 
+                        <label class="form-label">State / Region</label>
+                        <select class="form-select mb-3" id="reportRegion" required>
+                            <option value="">Choose region</option>
+                            <option>Yangon Region</option>
+                            <option>Mandalay Region</option>
+                            <option>Ayeyarwady Region</option>
+                            <option>Bago Region</option>
+                            <option>Magway Region</option>
+                            <option>Sagaing Region</option>
+                            <option>Tanintharyi Region</option>
+                            <option>Shan State</option>
+                            <option>Kachin State</option>
+                            <option>Kayin State</option>
+                            <option>Kayah State</option>
+                            <option>Chin State</option>
+                            <option>Mon State</option>
+                            <option>Rakhine State</option>
+                            <option>Naypyidaw Union Territory</option>
+                        </select>
+ 
+                        <label class="form-label">Township / Village</label>
+                        <input type="text" class="form-control mb-3" id="reportTownship" required>
+ 
+                        <label class="form-label">Subject</label>
+                        <input type="text" class="form-control mb-3" id="reportSubject" required>
+ 
+                        <label class="form-label">Your Message</label>
+                        <textarea class="form-control mb-3" id="reportMessage" rows="4" required></textarea>
+ 
+                        <button type="submit" class="action-button w-100">
+                            Prepare Official Letter
+                        </button>
+ 
+                    </form>
+ 
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="modal fade" id="HumanitarianAid" tabindex="-1">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+ 
+                <div class="modal-header">
+                    <h5>Request Relief Assistance</h5>
+                    <button class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+ 
+                <div class="modal-body">
+ 
+                    <form id="aidForm">
+ 
+                        <h6>Requester Information</h6>
+ 
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-control mb-3" id="aidName" required>
+ 
+                        <label class="form-label">Relationship to Affected Family</label>
+                        <select class="form-select mb-3" id="aidRelationship" required>
+                            <option value="">Choose relationship</option>
+                            <option>Affected person</option>
+                            <option>Family member</option>
+                            <option>Neighbour</option>
+                            <option>Community representative</option>
+                            <option>Volunteer</option>
+                            <option>Other</option>
+                        </select>
+ 
+                        <label class="form-label">Phone Number</label>
+                        <input type="tel" class="form-control mb-3" id="aidPhone" placeholder="09xxxxxxxxx" required>
+ 
+                        <label class="form-label">Email Address</label>
+                        <input type="email" class="form-control mb-3" id="aidEmail" required>
+ 
+                        <hr>
+ 
+                        <h6>Incident and Location Details</h6>
+ 
+                        <label class="form-label">State / Region</label>
+                        <select class="form-select mb-3" id="aidRegion" required>
+                            <option value="">Choose region</option>
+                            <option>Yangon Region</option>
+                            <option>Mandalay Region</option>
+                            <option>Ayeyarwady Region</option>
+                            <option>Bago Region</option>
+                            <option>Magway Region</option>
+                            <option>Sagaing Region</option>
+                            <option>Tanintharyi Region</option>
+                            <option>Shan State</option>
+                            <option>Kachin State</option>
+                            <option>Kayin State</option>
+                            <option>Kayah State</option>
+                            <option>Chin State</option>
+                            <option>Mon State</option>
+                            <option>Rakhine State</option>
+                            <option>Naypyidaw Union Territory</option>
+                        </select>
+ 
+                        <label class="form-label">Township / Village</label>
+                        <input type="text" class="form-control mb-3" id="aidTownship" required>
+ 
+                        <label class="form-label">Specific Location / Landmark</label>
+                        <textarea class="form-control mb-3" id="aidAddress" rows="2" required></textarea>
+ 
+                        <label class="form-label">Incident Date</label>
+                        <input type="date" class="form-control mb-3" id="aidIncidentDate" required>
+ 
+                        <label class="form-label">Number of Affected People</label>
+                        <input type="number" class="form-control mb-3" id="aidPeople" min="1" required>
+ 
+                        <label class="form-label">Are people in immediate danger?</label>
+                        <select class="form-select mb-3" id="aidDanger" required>
+                            <option value="">Choose an answer</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                            <option>Not sure</option>
+                        </select>
+ 
+                        <hr>
+ 
+                        <h6>Required Assistance</h6>
+ 
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Food" id="aidFood">
+                            <label class="form-check-label" for="aidFood">Food supplies</label>
+                        </div>
+ 
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Drinking Water" id="aidWater">
+                            <label class="form-check-label" for="aidWater">Clean drinking water</label>
+                        </div>
+ 
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Clothing and Blankets" id="aidClothes">
+                            <label class="form-check-label" for="aidClothes">Clothing and blankets</label>
+                        </div>
+ 
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Medical Supplies" id="aidMedical">
+                            <label class="form-check-label" for="aidMedical">Medical supplies</label>
+                        </div>
+ 
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="Temporary Shelter" id="aidShelter">
+                            <label class="form-check-label" for="aidShelter">Temporary shelter</label>
+                        </div>
+ 
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" value="Other Assistance" id="aidOther">
+                            <label class="form-check-label" for="aidOther">Other assistance</label>
+                        </div>
+ 
+                        <label class="form-label">Additional Details</label>
+                        <textarea class="form-control mb-3" id="aidDetails" rows="3"></textarea>
+ 
+                        <hr>
+ 
+                        <h6>Supporting Evidence</h6>
+ 
+                        <label class="form-label">Upload Photos or Documents</label>
+                        <input type="file" class="form-control mb-3" id="aidEvidence" accept="image/jpeg,image/png,application/pdf" multiple>
+ 
+                        <label class="form-label">Witness / Local Contact</label>
+                        <input type="text" class="form-control mb-3" id="aidWitness">
+ 
+                        <hr>
+ 
+                        <h6>Declaration and Signature</h6>
+ 
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="aidDeclaration" required>
+                            <label class="form-check-label" for="aidDeclaration">
+                                I confirm that the information provided is correct.
+                            </label>
+                        </div>
+ 
+                        <label class="form-label">Draw Your Signature</label>
+ 
+                        <canvas id="aidSignature" width="700" height="180"
+                            class="border rounded w-100"
+                            style="background: white; touch-action: none;">
+                        </canvas>
+ 
+                        <button type="button" class="btn btn-secondary btn-sm mt-2 mb-3" id="clearAidSignature">
+                            Clear Signature
+                        </button>
+ 
+                        <div class="alert alert-info">
+                            Your information will be used to prepare your disaster assistance request.
+                            Please ensure that all details provided are accurate and complete.
+                            By submitting this form, you agree to provide the information required to process your request.
+                            You may be contacted using the contact details you provide.
+                            Please note: Your request will be prepared as an email for submission.
+                            Uploaded documents and digital signatures are not automatically attached.
+                            Submitting this form does not guarantee that assistance will be provided.
+                        </div>
+ 
+                        <button type="submit" class="action-button w-100">
+                            Submit Relief Request
+                        </button>
+ 
+                    </form>
+ 
+                </div>
+            </div>
+        </div>
+    </div>
+ 
+    <div class="modal fade" id="SignIn" tabindex="-1">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content">
+ 
+                <div class="modal-header">
+                    <h4 class="modal-title">Sign In</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+ 
+                <div class="modal-body">
+ 
+                    <label class="form-label fw-semibold">Email</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-envelope"></i>
+                        </span>
+                        <input type="email" class="form-control" placeholder="name@gmail.com">
+                    </div>
+ 
+                    <label class="form-label fw-semibold">Password</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-lock"></i>
+                        </span>
+                        <input type="password" class="form-control" placeholder="Password123">
+                    </div>
+ 
+                </div>
+ 
+                <div class="modal-footer d-flex flex-column">
+                    <button type="button" class="btn log w-100">Sign In</button>
+                    <a href="#SignUp" data-bs-toggle="modal" data-bs-target="#SignUp" data-bs-dismiss="modal">
+                        Don't have an account?
+                    </a>
+                </div>
+ 
+            </div>
+        </div>
+    </div>
+ 
+    <div class="modal fade" id="SignUp" tabindex="-1">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content">
+ 
+                <div class="modal-header">
+                    <h4 class="modal-title">Register</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+ 
+                <div class="modal-body">
+ 
+                    <label class="form-label fw-semibold">Username</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-person"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="JohnDoe">
+                    </div>
+ 
+                    <label class="form-label fw-semibold">Email</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-envelope"></i>
+                        </span>
+                        <input type="email" class="form-control" placeholder="name@gmail.com">
+                    </div>
+ 
+                    <label class="form-label fw-semibold">Password</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-lock"></i>
+                        </span>
+                        <input type="password" class="form-control" placeholder="Password123">
+                    </div>
+ 
+                    <label class="form-label fw-semibold">Retype Password</label>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text bg-white">
+                            <i class="bi bi-lock"></i>
+                        </span>
+                        <input type="password" class="form-control" placeholder="Password123">
+                    </div>
+ 
+                </div>
+ 
+                <div class="modal-footer d-flex flex-column">
+                    <button type="button" class="btn sign w-100">Sign Up</button>
+                    <a href="#SignIn" data-bs-toggle="modal" data-bs-target="#SignIn" data-bs-dismiss="modal">
+                        Already have an account?
+                    </a>
+                </div>
+ 
+            </div>
+        </div>
+    </div>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+ 
+    <script>
+ 
+        function findHospitals() {
+ 
+            let region = document.getElementById("hospitalRegion").value;
+            let township = document.getElementById("hospitalTownship").value;
+ 
+            if (region == "") {
+                alert("Please select a region.");
+            } else {
+                let search = "hospitals in " + township + " " + region + " Myanmar";
+ 
+                window.open("https://www.google.com/maps/search/" + encodeURIComponent(search));
+            }
+ 
+        }
+ 
+        function findShelters() {
+ 
+            let region = document.getElementById("shelterRegion").value;
+            let township = document.getElementById("shelterTownship").value;
+ 
+            if (region == "") {
+                alert("Please select a region.");
+            } else {
+                let search = "evacuation shelters in " + township + " " + region + " Myanmar";
+ 
+                window.open("https://www.google.com/maps/search/" + encodeURIComponent(search));
+            }
+ 
+        }
+ 
+        document.getElementById("disasterForm").addEventListener("submit", function(event) {
+ 
+            event.preventDefault();
+ 
+            let name = document.getElementById("reportName").value;
+            let email = document.getElementById("reportEmail").value;
+            let type = document.getElementById("reportType").value;
+            let region = document.getElementById("reportRegion").value;
+            let township = document.getElementById("reportTownship").value;
+            let subject = document.getElementById("reportSubject").value;
+            let message = document.getElementById("reportMessage").value;
+ 
+            let body = "Name: " + name +
+                "\nEmail: " + email +
+                "\nReport: " + type +
+                "\nLocation: " + township + ", " + region +
+                "\n\nSubject: " + subject +
+                "\n\nMessage: " + message;
+ 
+            let emailLink = "mailto:?subject=" + encodeURIComponent(subject) +
+                "&body=" + encodeURIComponent(body);
+ 
+            window.location.href = emailLink;
+ 
+        });
+ 
+        let canvas = document.getElementById("aidSignature");
+        let ctx = canvas.getContext("2d");
+ 
+        let drawing = false;
+ 
+        canvas.addEventListener("pointerdown", function(event) {
+ 
+            drawing = true;
+ 
+            ctx.beginPath();
+            ctx.moveTo(event.offsetX, event.offsetY);
+ 
+        });
+ 
+        canvas.addEventListener("pointermove", function(event) {
+ 
+            if (drawing == true) {
+ 
+                ctx.lineTo(event.offsetX, event.offsetY);
+                ctx.stroke();
+ 
+            }
+ 
+        });
+ 
+        canvas.addEventListener("pointerup", function() {
+            drawing = false;
+        });
+ 
+        canvas.addEventListener("pointerleave", function() {
+            drawing = false;
+        });
+ 
+        document.getElementById("clearAidSignature").addEventListener("click", function() {
+ 
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+ 
+        });
+ 
+        document.getElementById("aidForm").addEventListener("submit", function(event) {
+ 
+            event.preventDefault();
+ 
+            let food = document.getElementById("aidFood").checked;
+            let water = document.getElementById("aidWater").checked;
+            let clothes = document.getElementById("aidClothes").checked;
+            let medical = document.getElementById("aidMedical").checked;
+            let shelter = document.getElementById("aidShelter").checked;
+            let other = document.getElementById("aidOther").checked;
+ 
+            if (food == false && water == false && clothes == false &&
+                medical == false && shelter == false && other == false) {
+ 
+                alert("Please select the assistance needed.");
+                return;
+ 
+            }
+ 
+            let signature = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+            let hasSignature = false;
+ 
+            for (let i = 3; i < signature.length; i = i + 4) {
+ 
+                if (signature[i] > 0) {
+                    hasSignature = true;
+                }
+ 
+            }
+ 
+            if (hasSignature == false) {
+                alert("Please draw your signature.");
+                return;
+            }
+ 
+            let files = document.getElementById("aidEvidence").files;
+ 
+            if (files.length > 3) {
+                alert("You can upload up to 3 files.");
+                return;
+            }
+ 
+            for (let i = 0; i < files.length; i++) {
+ 
+                if (files[i].size > 5 * 1024 * 1024) {
+                    alert("Each file must be smaller than 5 MB.");
+                    return;
+                }
+ 
+            }
+ 
+            let name = document.getElementById("aidName").value;
+            let relationship = document.getElementById("aidRelationship").value;
+            let phone = document.getElementById("aidPhone").value;
+            let email = document.getElementById("aidEmail").value;
+            let region = document.getElementById("aidRegion").value;
+            let township = document.getElementById("aidTownship").value;
+            let address = document.getElementById("aidAddress").value;
+            let date = document.getElementById("aidIncidentDate").value;
+            let people = document.getElementById("aidPeople").value;
+            let danger = document.getElementById("aidDanger").value;
+            let details = document.getElementById("aidDetails").value;
+            let witness = document.getElementById("aidWitness").value;
+ 
+            let selected = "";
+ 
+            if (food == true) {
+                selected = selected + "Food, ";
+            }
+ 
+            if (water == true) {
+                selected = selected + "Drinking Water, ";
+            }
+ 
+            if (clothes == true) {
+                selected = selected + "Clothing and Blankets, ";
+            }
+ 
+            if (medical == true) {
+                selected = selected + "Medical Supplies, ";
+            }
+ 
+            if (shelter == true) {
+                selected = selected + "Temporary Shelter, ";
+            }
+ 
+            if (other == true) {
+                selected = selected + "Other Assistance, ";
+            }
+ 
+            let subject = "Relief Request - " + township;
+ 
+            let body = "RELIEF REQUEST\n\n" +
+                "Name: " + name +
+                "\nRelationship: " + relationship +
+                "\nPhone: " + phone +
+                "\nEmail: " + email +
+                "\nRegion: " + region +
+                "\nTownship: " + township +
+                "\nLocation: " + address +
+                "\nIncident Date: " + date +
+                "\nAffected People: " + people +
+                "\nImmediate Danger: " + danger +
+                "\nAssistance Needed: " + selected +
+                "\nAdditional Details: " + details +
+                "\nWitness: " + witness +
+                "\nEvidence Files: " + files.length +
+                "\nSignature: Provided" +
+                "\nDeclaration: Confirmed";
+ 
+            alert("Your email draft will now open. Remember to check it before sending.");
+ 
+            let emailLink = "mailto:?subject=" + encodeURIComponent(subject) +
+                "&body=" + encodeURIComponent(body);
+ 
+            window.location.href = emailLink;
+ 
+        });
+ 
+    </script>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- General Offcanvas -->
+    <div class="offcanvas offcanvas-end site-offcanvas" tabindex="-1" id="siteOffcanvas" aria-labelledby="siteOffcanvasLabel">
+        <div class="offcanvas-header">
+            <div>
+                <h5 class="offcanvas-title mb-1" id="siteOffcanvasLabel">Explore M.L.D.</h5>
+                <p class="small mb-0">Maps, news and useful information</p>
+            </div>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+
+        <div class="offcanvas-body">
+            <ul class="nav nav-pills site-panel-tabs mb-3" id="sitePanelTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="panel-map-tab" data-bs-toggle="pill" data-bs-target="#panel-map" type="button" role="tab" aria-controls="panel-map" aria-selected="true">
+                        <i class="bi bi-map me-1"></i> Map
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="panel-news-tab" data-bs-toggle="pill" data-bs-target="#panel-news" type="button" role="tab" aria-controls="panel-news" aria-selected="false">
+                        <i class="bi bi-newspaper me-1"></i> News & Updates
+                    </button>
+                </li>
+            </ul>
+
+            <div class="tab-content">
+                <div class="tab-pane fade show active" id="panel-map" role="tabpanel" aria-labelledby="panel-map-tab" tabindex="0">
+                    <div id="offcanvasMap" class="offcanvas-map"></div>
+                    <p class="small text-muted mt-3 mb-2">This map displays sample locations for the project. It is not a live warning map.</p>
+                    <a href="map.html" class="btn btn-theme btn-sm">Open Full Map <i class="bi bi-arrow-right ms-1"></i></a>
+                </div>
+
+                <div class="tab-pane fade" id="panel-news" role="tabpanel" aria-labelledby="panel-news-tab" tabindex="0">
+                    <div class="news-notice mb-3">
+                        <i class="bi bi-info-circle-fill me-2"></i>
+                        These are sample educational updates for the project, not official government announcements.
+                    </div>
+
+                    <article class="site-news-item">
+                        <span class="badge news-label">Safety Bulletin</span>
+                        <h6 class="mt-2 mb-1">Rainfall and slope stability</h6>
+                        <p class="small text-muted mb-2">Prolonged or intense rainfall can saturate soil and increase landslide risk. Pay attention to official local advisories and changes such as ground cracks or unusual water flow.</p>
+                        <a href="preparation.html" class="small">Read safety guidance <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="site-news-item">
+                        <span class="badge news-label">Preparedness Update</span>
+                        <h6 class="mt-2 mb-1">Plan ahead before severe weather</h6>
+                        <p class="small text-muted mb-2">Know your evacuation routes, identify safer locations and keep important emergency contacts accessible before heavy rain begins.</p>
+                        <a href="preparation.html" class="small">View preparation tips <i class="bi bi-arrow-right"></i></a>
+                    </article>
+
+                    <article class="site-news-item">
+                        <span class="badge news-label">Map Information</span>
+                        <h6 class="mt-2 mb-1">Explore mapped landslide locations</h6>
+                        <p class="small text-muted mb-2">The interactive map is included to help visitors explore example locations and understand how hazard information can be presented.</p>
+                        <a href="map.html" class="small">Explore the map <i class="bi bi-arrow-right"></i></a>
+                    </article>
+                    <div class="mt-3"><a href="articles.html" class="btn btn-theme btn-sm w-100">View all articles <i class="bi bi-arrow-right ms-1"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Open the General Offcanvas -->
+    <button type="button" class="btn site-offcanvas-button" data-bs-toggle="offcanvas" data-bs-target="#siteOffcanvas" aria-controls="siteOffcanvas">
+        <i class="bi bi-grid-fill"></i> Explore
+    </button>
+
+    <script>
+        (function () {
+            const panel = document.getElementById("siteOffcanvas");
+            const mapCanvas = document.getElementById("offcanvasMap");
+            const mapTab = document.getElementById("panel-map-tab");
+            let previewMap = null;
+
+            function showPreviewMap() {
+                if (typeof L === "undefined") {
+                    mapCanvas.innerHTML = '<p class="p-3 small">The map could not load. Please check your internet connection.</p>';
+                    return;
+                }
+
+                if (!previewMap) {
+                    previewMap = L.map("offcanvasMap").setView([21.9, 96.0], 5);
+
+                    L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                        maxZoom: 18,
+                        attribution: "&copy; OpenStreetMap contributors"
+                    }).addTo(previewMap);
+
+                    const locations = [
+                        { name: "Dawei District, Tanintharyi", lat: 14.083, lng: 98.200, color: "#d9534f" },
+                        { name: "Monghsu Township, Shan", lat: 21.917, lng: 98.383, color: "#f0ad4e" },
+                        { name: "Hpakant, Kachin", lat: 25.613, lng: 96.311, color: "#d9534f" },
+                        { name: "Rezua, Chin", lat: 22.053, lng: 93.409, color: "#5cb85c" },
+                        { name: "Tangyan Township, Shan", lat: 22.483, lng: 98.400, color: "#f0ad4e" },
+                        { name: "Naungmon Township, Kachin", lat: 27.500, lng: 97.817, color: "#5cb85c" },
+                        { name: "Pang War, Kachin", lat: 25.594, lng: 98.379, color: "#f0ad4e" }
+                    ];
+
+                    locations.forEach(function (location) {
+                        L.circleMarker([location.lat, location.lng], {
+                            radius: 7,
+                            color: "white",
+                            weight: 2,
+                            fillColor: location.color,
+                            fillOpacity: 0.9
+                        }).bindPopup(location.name).addTo(previewMap);
+                    });
+                }
+
+                previewMap.invalidateSize();
+            }
+
+            panel.addEventListener("shown.bs.offcanvas", function () {
+                if (mapTab.classList.contains("active")) {
+                    showPreviewMap();
+                }
+            });
+
+            mapTab.addEventListener("shown.bs.tab", showPreviewMap);
+
+            document.querySelectorAll("[data-panel-tab]").forEach(function (link) {
+                link.addEventListener("click", function (event) {
+                    event.preventDefault();
+                    const tabButton = document.querySelector(link.getAttribute("data-panel-tab"));
+
+                    if (tabButton && window.bootstrap) {
+                        bootstrap.Tab.getOrCreateInstance(tabButton).show();
+                    }
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>
